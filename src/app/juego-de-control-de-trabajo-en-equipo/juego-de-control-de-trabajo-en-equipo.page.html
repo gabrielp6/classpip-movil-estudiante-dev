@@ -127,7 +127,8 @@ Se ve la lista de controles (hechos, el que hay que hacer y los que quedan por h
         </ion-card-header>
         <ion-card-content>
           <ion-item *ngFor = "let comentario of comentariosEquipo ">
-            <ion-textarea  [disabled]="true" [(ngModel)]="comentario"></ion-textarea>
+            <!-- Was removed [(ngModel)]="comentario" in the next line -->
+            <ion-textarea  [disabled]="true">{{comentario}}</ion-textarea>
           </ion-item>
         </ion-card-content>
       </ion-card>

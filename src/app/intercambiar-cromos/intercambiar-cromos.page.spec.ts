@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { IntercambiarCromosPage } from './intercambiar-cromos.page';
 
@@ -7,7 +7,7 @@ describe('IntercambiarCromosPage', () => {
   let component: IntercambiarCromosPage;
   let fixture: ComponentFixture<IntercambiarCromosPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ IntercambiarCromosPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

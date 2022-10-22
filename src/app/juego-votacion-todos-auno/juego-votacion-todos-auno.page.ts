@@ -15,7 +15,7 @@ import { WheelSelector } from '@ionic-native/wheel-selector/ngx';
   styleUrls: ['./juego-votacion-todos-auno.page.scss'],
 })
 export class JuegoVotacionTodosAUnoPage implements OnInit {
-  @ViewChild('accordion', {static: false}) accordion: MatAccordion;
+  @ViewChild('accordion') accordion: MatAccordion;
 
   juegoSeleccionado: any;
   alumno: Alumno;

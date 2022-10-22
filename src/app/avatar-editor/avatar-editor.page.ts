@@ -39,7 +39,7 @@ export class AvatarEditorPage implements OnInit {
 
   mostrarComplementos = false;
 
-  @ViewChild(IonContent, { static: false }) content: IonContent;
+  @ViewChild(IonContent) content: IonContent;
 
   constructor(private peticionesAPI: PeticionesAPIService,
               private sesion: SesionService,

@@ -8,8 +8,8 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content *ngIf = "juego.ModoVistaEvaluado === 'soloGlobal'">
+<!-- Was replaced juego.ModoVistaEvaluado === 'todo' for juego.ModoVistaEvaluado === 'todo (next line)-->
+<ion-content *ngIf = "juego.ModoVistaEvaluado === 'todo'">
   <ion-card>
     <ion-item *ngIf = "evaluacionesPendientes === 0" color="primary">
       <strong>Nota Final {{notaFinal}}</strong>

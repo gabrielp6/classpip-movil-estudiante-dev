@@ -9,7 +9,7 @@ import { AlumnoJuegoDeCuestionario } from '../clases/AlumnoJuegoDeCuestionario';
 import { Router } from '@angular/router';
 import { MiAlumnoAMostrarJuegoDeCuestionario } from '../clases/MiAlumnoAMostrarJuegoDeCuestionario';
 import { RespuestaJuegoDeCuestionario } from '../clases/RespuestaJuegoDeCuestionario';
-import {MatStepper} from '@angular/material';
+import { MatStepper } from '@angular/material/stepper';
 
 import * as URL from '../URLs/urls';
 import { Observable } from 'rxjs';
@@ -108,12 +108,12 @@ export class JuegoDeCuestionarioPage implements OnInit {
   respuestasPorEquipo = [];
   panelAbierto = false;
 
-  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
+  @ViewChild(IonSlides) slides: IonSlides;
 
 
   // @ViewChild('stepper') stepper: MatStepper;
 
-  @ViewChild(MatStepper, { static: false }) stepper: MatStepper;
+  @ViewChild(MatStepper) stepper: MatStepper;
 
   constructor(
     private sesion: SesionService,

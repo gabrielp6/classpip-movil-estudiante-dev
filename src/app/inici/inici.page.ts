@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { SwiperComponent, SwiperModule } from 'swiper/angular';
+import { NoopAnimationPlayer } from '@angular/animations';
+import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SesionService } from '../servicios/sesion.service';
 import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { PeticionesAPIService } from '../servicios/index';
@@ -7,26 +9,28 @@ import { Juego, Equipo, Evento } from '../clases/index';
 import { Router } from '@angular/router';
 import { JuegoSeleccionadoPage } from '../juego-seleccionado/juego-seleccionado.page';
 import { IonSlides } from '@ionic/angular';
+import Swiper, { SwiperOptions } from 'swiper';
+import { ThisReceiver } from '@angular/compiler/src/expression_parser/ast';
 
 
 @Component({
   selector: 'app-inici',
   templateUrl: './inici.page.html',
   styleUrls: ['./inici.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class IniciPage implements OnInit {
+export class IniciPage implements OnInit,AfterContentChecked {
+
+  @ViewChild('swiper') swiper: SwiperComponent;
+  @ViewChild(IonSlides) slides: IonSlides;
+  // prevBtn = document.getElementById('prevBtn') as HTMLButtonElement | null;
+  // nextBtn = document.getElementById('nextBtn') as HTMLButtonElement | null;
 
   /* Creamos los array con los juegos activos e inactivos que solicitaremos a la API */
   id: number;
   JuegosActivos: Juego[] = [];
   disablePrevBtn = true;
   disableNextBtn = false;
-
-
-
-
-  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
-
 
 
   //animals: any[];
@@ -49,6 +53,13 @@ export class IniciPage implements OnInit {
     //     this.JuegosActivos = listas.activos;
     //     console.log ('ya tengo los juegos ', this.JuegosActivos);
     // });
+  }
+
+  ngAfterContentChecked(): void {
+    if(this.swiper){
+      this.swiper.updateSwiper([]);
+
+    }
   }
 
   async DameJuegosAlumno (id) {
@@ -108,24 +119,39 @@ export class IniciPage implements OnInit {
     }
   }
 
+ 
+
   doCheck() {
     // Para decidir si hay que mostrar los botones de previo o siguiente slide
-    const prom1 = this.slides.isBeginning();
-    const prom2 = this.slides.isEnd();
+    // const prom1 = this.slides.isBeginning();
+    // const prom2 = this.slides.isEnd();
+    const prom1 = this.swiper.swiperRef.isBeginning;
+    const prom2 = this.swiper.swiperRef.isEnd;
 
+    
     Promise.all([prom1, prom2]).then((data) => {
+      console.log("Esta es data 0:")
+      console.log(data[0]);
       data[0] ? this.disablePrevBtn = true : this.disablePrevBtn = false;
       data[1] ? this.disableNextBtn = true : this.disableNextBtn = false;
+      // data[0] ? this.prevBtn?.setAttribute('disabled','') : this.prevBtn?.removeAttribute('disabled');
+      // data[1] ? this.nextBtn?.setAttribute('disabled','') : this.nextBtn?.removeAttribute('disabled');
+      // if(data[0]){
+      //   this.disablePrevBtn = true;
+      // }
+
     });
   }
 
 
   next() {
-    this.slides.slideNext();
+    // this.slides.slideNext();
+    this.swiper.swiperRef.slideNext();
   }
 
   prev() {
-    this.slides.slidePrev();
+    // this.slides.slidePrev();
+    this.swiper.swiperRef.slidePrev();
   }
 
 

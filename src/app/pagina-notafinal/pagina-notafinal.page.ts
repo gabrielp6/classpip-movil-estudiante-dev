@@ -5,7 +5,6 @@ import {JuegoDeEvaluacion} from '../clases/JuegoDeEvaluacion';
 import {Alumno, Equipo, Rubrica, TablaHistorialPuntosAlumno} from '../clases';
 import {AlumnoJuegoDeEvaluacion} from '../clases/AlumnoJuegoDeEvaluacion';
 import {EquipoJuegoDeEvaluacion} from '../clases/EquipoJuegoDeEvaluacion';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-pagina-notafinal',

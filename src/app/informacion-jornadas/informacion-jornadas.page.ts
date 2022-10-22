@@ -206,10 +206,10 @@ ConstruirTablaEnfrentamientosTorneo() {
     }
   }
 
-  // sliderConfig = {
-  //   slidesPerView: 1.6,
-  //   spaceBetween: 10,
-  //   centeredSlides: true
-  // };
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
 
 }

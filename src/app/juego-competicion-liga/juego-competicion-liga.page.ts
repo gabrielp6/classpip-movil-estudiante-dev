@@ -45,7 +45,7 @@ export class JuegoCompeticionLigaPage implements OnInit {
     private calculos: CalculosService,
   ) { }
 
-  @ViewChild('content', { static: false }) content: IonContent;
+  @ViewChild('content') content: IonContent;
 
   ngOnInit() {
     this.juegoSeleccionado = this.sesion.DameJuego();

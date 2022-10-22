@@ -8,7 +8,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-slides [options]="sliderConfig">
+  <!-- [options]="sliderConfig" was removed -->
+  <ion-slides [options]="">
     <ion-slide *ngFor="let avatar of listaAvatares">
       <!-- En la listaAvatares tengo para cada alumno: sus datos (campo al), su inscripcion (campo insc) y su voz (campo Voz) -->
       <div>
