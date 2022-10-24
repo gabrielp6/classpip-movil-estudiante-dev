@@ -23,7 +23,7 @@ export class MisJuegosInactivosPage implements OnInit {
 
 
 
-  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
+  @ViewChild(IonSlides) slides: IonSlides;
 
 
 

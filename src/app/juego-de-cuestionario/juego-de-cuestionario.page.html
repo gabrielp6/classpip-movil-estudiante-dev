@@ -2,7 +2,8 @@
   <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
       <ion-back-button *ngIf="!empezado" class="menu-btn"></ion-back-button>
-      <ion-button *ngIf = "empezado" style ="font-size: 17.5px;" (click)="popup()">
+      <!-- Remove (click)="popup()"  in the next line-->
+      <ion-button *ngIf = "empezado" style ="font-size: 17.5px;">
         <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -84,13 +85,13 @@ Depende de si el alumno ha contestado las preguntas ya o aun no -->
                   <ion-item lines = "none" style = "width: 90%; margin-left: 10%;">
                     <ion-item lines = "none">
                       <p style="font-size: 15px;">Verdadero</p> 
-                      <ion-radio slot="start"  value="0" checked="{{seleccion[i][0]}}"
-                        color="primary"></ion-radio>
+                      <!-- Was removed checked due to ionic 5 migration  checked="{{seleccion[i][0]}}"-->
+                      <ion-radio slot="start"  value="0" color="primary"></ion-radio>
                     </ion-item>
                     <ion-item lines = "none">
                       <p style="font-size: 15px;">Falso</p> 
-                      <ion-radio slot="start" value="1" checked="{{seleccion[i][1]}}"
-                        color="primary"></ion-radio>
+                      <!-- Was removed checked due to ionic 5 migration  checked="{{seleccion[i][1]}}"-->
+                      <ion-radio slot="start" value="1"  color="primary"></ion-radio>
                     </ion-item>
                   </ion-item>
 
@@ -109,8 +110,8 @@ Depende de si el alumno ha contestado las preguntas ya o aun no -->
               <ion-radio-group allow-empty-selection="true" name="radio-group" #radioGroup (ionChange) = "radioGroupChange($event, i)">
                   <ion-item *ngFor="let respuesta of item.respuestas; let j = index"  (ionChange)="radioSelect($event, i, j)">
                     <p style="font-size: 15px;">{{respuesta}}</p> 
-                    <ion-radio slot="start" value="{{j}}" checked="{{seleccion[i][j]}}"
-                      color="primary"></ion-radio>
+                    <!-- Was removed checked due to ionic 5 migration  checked="{{seleccion[i][j]}}"-->
+                    <ion-radio slot="start" value="{{j}}" color="primary"></ion-radio>
                   </ion-item>
               </ion-radio-group>
     
@@ -992,13 +993,13 @@ Depende de si el alumno ha contestado las preguntas ya o aun no -->
                 <ion-item lines = "none" style = "width: 90%; margin-left: 10%;">
                   <ion-item lines = "none">
                     <p style="font-size: 15px;">Verdadero</p> 
-                    <ion-radio slot="start"  value="0" checked="{{seleccion[i][0]}}"
-                      color="primary"></ion-radio>
+                    <!-- Was removed checked="{{seleccion[i][0]}}" -->
+                    <ion-radio slot="start"  value="0" color="primary"></ion-radio>
                   </ion-item>
                   <ion-item lines = "none">
-                    <p style="font-size: 15px;">Falso</p> 
-                    <ion-radio slot="start" value="1" checked="{{seleccion[i][1]}}"
-                      color="primary"></ion-radio>
+                    <p style="font-size: 15px;">Falso</p>
+                    <!-- Was removed checked="{{seleccion[i][1]}}" --> 
+                    <ion-radio slot="start" value="1" color="primary"></ion-radio>
                   </ion-item>
                 </ion-item>
 
@@ -1017,8 +1018,8 @@ Depende de si el alumno ha contestado las preguntas ya o aun no -->
             <ion-radio-group allow-empty-selection="true" name="radio-group" #radioGroup (ionChange) = "radioGroupChange($event, i)">
                 <ion-item *ngFor="let respuesta of item.respuestas; let j = index"  (ionChange)="radioSelect($event, i, j)">
                   <p style="font-size: 15px;">{{respuesta}}</p> 
-                  <ion-radio slot="start" value="{{j}}" checked="{{seleccion[i][j]}}"
-                    color="primary"></ion-radio>
+                   <!-- Was removed checked="{{seleccion[i][j]}}" --> 
+                  <ion-radio slot="start" value="{{j}}" color="primary"></ion-radio>
                 </ion-item>
             </ion-radio-group>
   

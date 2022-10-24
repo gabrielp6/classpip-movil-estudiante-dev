@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { JuegoCompeticionLigaPage } from './juego-competicion-liga.page';
 
@@ -7,7 +7,7 @@ describe('JuegoCompeticionLigaPage', () => {
   let component: JuegoCompeticionLigaPage;
   let fixture: ComponentFixture<JuegoCompeticionLigaPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ JuegoCompeticionLigaPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

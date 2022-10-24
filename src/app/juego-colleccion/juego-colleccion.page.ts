@@ -70,9 +70,9 @@ export class JuegoColleccionPage implements OnInit {
   ElegirYRegalarCromo;
 
 
-  @ViewChild(IonSlides, { static: false }) slides: IonSlides;
+  @ViewChild(IonSlides) slides: IonSlides;
 
-  @ViewChild('content', { static: false }) content: IonContent;
+  @ViewChild('content') content: IonContent;
 
 
 

@@ -23,8 +23,8 @@
     <button *ngIf="!disableNextBtn" class = "siguiente" mat-raised-button (click)="next()"> Siguiente
     </button>
     <!-- (ionSlideDidChange)="getIndex()" -->
- 
-    <ion-slides style = "margin-top: 18%;" [options]="sliderConfig" #slides (ionSlideWillChange)="doCheck()" (ionSlideDidChange)="getIndex()"  *ngIf ="juegoSeleccionado && cuestionarioSatisfaccion">
+  <!-- [options]="sliderConfig" was removed -->
+    <ion-slides style = "margin-top: 18%;" [options]="" #slides (ionSlideWillChange)="doCheck()" (ionSlideDidChange)="getIndex()"  *ngIf ="juegoSeleccionado && cuestionarioSatisfaccion">
   
 
       <ion-slide>
@@ -118,7 +118,8 @@
     </button>
     <button *ngIf="!disableNextBtn" class = "siguiente" mat-raised-button (click)="next()"> Siguiente
     </button>
-    <ion-slides style = "margin-top: 18%;" [options]="sliderConfig" #slides (ionSlideWillChange)="doCheck()" >
+    <!--[options]="sliderConfig" was removed  -->
+    <ion-slides style = "margin-top: 18%;" [options]="" #slides (ionSlideWillChange)="doCheck()" >
     <ion-slide>
       <div align = 'center'style = "margin-top: 50px;">
         <p><b>Titulo: </b></p>
