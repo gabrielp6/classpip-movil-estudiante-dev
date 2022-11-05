@@ -155,10 +155,13 @@ export class PeticionesAPIService {
   }
 
 
-  public DameAlumno(nombreUsuario: string, password: string): Observable<Alumno> {
+  public DameAlumno(nombreUsuario: string, password: string): Observable<any> {
 
-    return this.http.get<Alumno>(this.APIUrlAlumnos + '?filter[where][Username]=' + nombreUsuario
-      + '&filter[where][Password]=' + password);
+    // return this.http.get<Alumno>(this.APIUrlAlumnos + '?filter[where][Username]=' + nombreUsuario
+    //   + '&filter[where][Password]=' + password);
+    console.log(this.APIUrlAlumnos)
+    return this.http.get<any>(this.APIUrlAlumnos);
+    
   }
 
 
