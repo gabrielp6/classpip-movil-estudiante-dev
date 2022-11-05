@@ -46,7 +46,7 @@ export class JuegoCompeticionF1Page implements OnInit {
   JornadasCompeticion: TablaJornadas[];
 
 
-  @ViewChild('barChart', { static: false }) barChart: ElementRef;
+  @ViewChild('barChart') barChart: ElementRef;
   bars: any;
   colorArray: any;
 
@@ -61,7 +61,7 @@ export class JuegoCompeticionF1Page implements OnInit {
   ) { }
 
 
-  @ViewChild('content', { static: false }) content: IonContent;
+  @ViewChild('content') content: IonContent;
 
   ngOnInit() {
     this.MiAlumno = this.sesion.DameAlumno();

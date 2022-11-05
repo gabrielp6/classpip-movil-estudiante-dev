@@ -56,7 +56,7 @@ export class JuegoPuntosPage implements OnInit {
     private peticionesAPI: PeticionesAPIService,
     private calculos: CalculosService,
   ) { }
-  @ViewChild('content', { static: false }) content: IonContent;
+  @ViewChild('content') content: IonContent;
   toggleInfoView() {
     this.infoView = !this.infoView;
   }

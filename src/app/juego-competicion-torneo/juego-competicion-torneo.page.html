@@ -19,8 +19,8 @@
   <div  class="subtitulo"style="font-size: 100%; color: black;">Desliza para ver las diferentes fases del torneo</div>
   <br>
   </div>
-  
-    <ion-slides [options]="sliderConfig">
+    <!-- Was removed  [options]="sliderConfig"-->
+    <ion-slides [options]="">
       <ion-slide *ngFor="let participantes of enfrentamientosDelJuego; let i=index">
         <div>
           <div *ngIf="enfrentamientosDelJuego.length - i  == 1" >

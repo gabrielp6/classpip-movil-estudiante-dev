@@ -13,7 +13,7 @@ import {MatAccordion} from '@angular/material/expansion';
   styleUrls: ['./mis-grupos.page.scss'],
 })
 export class MisGruposPage implements OnInit {
-  @ViewChild('accordion', {static: false}) accordion: MatAccordion;
+  @ViewChild('accordion') accordion: MatAccordion;
 
   Grupos: Grupo[];
   Alumno: Alumno;

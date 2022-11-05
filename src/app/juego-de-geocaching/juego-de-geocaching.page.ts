@@ -6,7 +6,7 @@ import { Juego, AlumnoJuegoDeGeocaching, Escenario, PuntoGeolocalizable, MiAlumn
 import { Pregunta } from '../clases/Pregunta';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { MatStepper } from '@angular/material';
+import { MatStepper } from '@angular/material/stepper';
 import { Socket } from 'ngx-socket-io';
 
 
@@ -16,7 +16,7 @@ import { Socket } from 'ngx-socket-io';
   styleUrls: ['./juego-de-geocaching.page.scss'],
 })
 export class JuegoDeGeocachingPage implements OnInit {
-  @ViewChild('stepper', {static: false}) stepper: MatStepper;
+  @ViewChild('stepper') stepper: MatStepper;
 
   empezado: boolean = false;
   rendirse: boolean = false;
