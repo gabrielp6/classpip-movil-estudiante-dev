@@ -25,7 +25,6 @@
     "@angular/platform-browser": "~13.3.11",
     "@angular/platform-browser-dynamic": "~13.3.11",
     "@angular/router": "~13.3.11",
-    "@capacitor-community/http": "^1.4.1",
     "@capacitor/android": "4.4.0",
     "@capacitor/app": "^4.1.0",
     "@capacitor/core": "4.4.0",

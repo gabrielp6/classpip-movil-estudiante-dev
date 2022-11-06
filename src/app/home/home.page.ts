@@ -20,7 +20,6 @@ import { WheelSelector } from '@ionic-native/wheel-selector/ngx';
 
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Network } from '@ionic-native/network/ngx';
-import { TestServiceService } from '../servicios/test-service.service';
 
 @Component({
   selector: 'app-home',
@@ -91,7 +90,6 @@ export class HomePage {
     private localNotifications: LocalNotifications,
     public platform: Platform,
     private network: Network,
-    private testService: TestServiceService
     //private transfer: Transfer,
    // private camera: Camera
 
@@ -591,19 +589,6 @@ replay() {
         });
     }
 
-    Autenticar2() {
-      this.testService.dameAlumno(this.username, this.password).subscribe((res) => {
-        // if(res[0] != undefined) {
-        //   console.log("Conectado satisfactoriamente");
-        //   console.log("res: " + res[0]);
-        // } else {
-        //   console.log("Ha ocurrido un error")
-        // }
-        console.log(res)
-      
-      })
-    }
-
     Autentificar() {
       if(!this.platform.is('mobileweb')) { //Para evitar posibles errores
         this.network.onDisconnect().subscribe(() => { //Nos suscribimos por si cae la conexión y así poder reconectar el socket
@@ -615,33 +600,31 @@ replay() {
       this.presentLoading();
       console.log ('PASS ', this.password);
       this.peticionesAPI.DameAlumno(this.username, this.password).subscribe((res) => {
+        if (res[0] !== undefined) {
+          this.alumno = res[0];
+          this.sesion.TomaAlumno(this.alumno);
+          console.log('bien logado');
+          this.comServer.Conectar(this.alumno);
 
-        console.log(res);
-        // if (res[0] !== undefined) {
-        //   this.alumno = res[0];
-        //   this.sesion.TomaAlumno(this.alumno);
-        //   console.log('bien logado');
-        //   this.comServer.Conectar(this.alumno);
+          this.comServer.EsperarNotificaciones().subscribe(async (notificacion: any) => {
+            console.log ('He recibido notificación:  ' + notificacion);
+            this.contNotif = this.contNotif + 1;
+            this.localNotifications.schedule({
+              id: this.contNotif,
+              text: notificacion,
+            });
+          });
 
-        //   this.comServer.EsperarNotificaciones().subscribe(async (notificacion: any) => {
-        //     console.log ('He recibido notificación:  ' + notificacion);
-        //     this.contNotif = this.contNotif + 1;
-        //     this.localNotifications.schedule({
-        //       id: this.contNotif,
-        //       text: notificacion,
-        //     });
-        //   });
-
-        //   setTimeout(() => {
-        //     this.route.navigateByUrl('/tabs/inici');
-        //   }, 1500);
-        // } else {
-        //   // Aqui habría que mostrar alguna alerta al usuario
-        //   setTimeout(() => {
-        //     this.presentAlert();
-        //   }, 1500);
-        //   console.log('alumno no existe');
-        // }
+          setTimeout(() => {
+            this.route.navigateByUrl('/tabs/inici');
+          }, 1500);
+        } else {
+          // Aqui habría que mostrar alguna alerta al usuario
+          setTimeout(() => {
+            this.presentAlert();
+          }, 1500);
+          console.log('alumno no existe');
+        }
       });
     }
 
