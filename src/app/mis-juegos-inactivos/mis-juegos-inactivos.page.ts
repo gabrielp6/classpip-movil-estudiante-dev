@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { SwiperComponent } from 'swiper/angular';
 import { SesionService } from '../servicios/sesion.service';
 import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { PeticionesAPIService } from '../servicios/index';
@@ -22,8 +23,8 @@ export class MisJuegosInactivosPage implements OnInit {
   disableNextBtn = false;
 
 
-
-  @ViewChild(IonSlides) slides: IonSlides;
+  @ViewChild('swiper') swiper: SwiperComponent;
+  // @ViewChild(IonSlides) slides: IonSlides;
 
 
 
@@ -80,8 +81,10 @@ export class MisJuegosInactivosPage implements OnInit {
   
   doCheck() {
     // Para decidir si hay que mostrar los botones de previo o siguiente slide
-    const prom1 = this.slides.isBeginning();
-    const prom2 = this.slides.isEnd();
+    // const prom1 = this.slides.isBeginning();
+    // const prom2 = this.slides.isEnd();
+    const prom1 = this.swiper.swiperRef.isBeginning;
+    const prom2 = this.swiper.swiperRef.isEnd;
   
     Promise.all([prom1, prom2]).then((data) => {
       data[0] ? this.disablePrevBtn = true : this.disablePrevBtn = false;
@@ -90,11 +93,13 @@ export class MisJuegosInactivosPage implements OnInit {
   }
   
   next() {
-    this.slides.slideNext();
+    // this.slides.slideNext();
+    this.swiper.swiperRef.slideNext();
   }
 
   prev() {
-    this.slides.slidePrev();
+    // this.slides.slidePrev();
+    this.swiper.swiperRef.slidePrev();
   }
 
 
