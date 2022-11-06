@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { IonicModule } from '@ionic/angular';
-
+import { SwiperModule } from 'swiper/angular';
 import { MisJuegosInactivosPage } from './mis-juegos-inactivos.page';
 
 const routes: Routes = [
@@ -20,7 +20,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SwiperModule
   ],
   declarations: [MisJuegosInactivosPage]
 })

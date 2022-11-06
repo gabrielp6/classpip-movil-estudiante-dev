@@ -22,7 +22,7 @@ import { ThisReceiver } from '@angular/compiler/src/expression_parser/ast';
 export class IniciPage implements OnInit,AfterContentChecked {
 
   @ViewChild('swiper') swiper: SwiperComponent;
-  @ViewChild(IonSlides) slides: IonSlides;
+  // @ViewChild(IonSlides) slides: IonSlides;
   // prevBtn = document.getElementById('prevBtn') as HTMLButtonElement | null;
   // nextBtn = document.getElementById('nextBtn') as HTMLButtonElement | null;
 
@@ -58,7 +58,6 @@ export class IniciPage implements OnInit,AfterContentChecked {
   ngAfterContentChecked(): void {
     if(this.swiper){
       this.swiper.updateSwiper([]);
-
     }
   }
 
