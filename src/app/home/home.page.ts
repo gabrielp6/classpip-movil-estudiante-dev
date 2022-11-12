@@ -61,6 +61,7 @@ export class HomePage {
   clave: string;
   nickname: string;
   registro = false;
+  reenviarPassword = false;
   login = true;
 
   primerApellido: string;
@@ -645,6 +646,10 @@ replay() {
       this.registro = false;
       this.login = true;
     }
+    VolverDeReenviarContrasena(){
+      this.reenviarPassword = false;
+      this.login = true;
+    }
 
     ValidaEmail(email) {
       const re = /\S+@\S+\.\S+/;
@@ -728,6 +733,7 @@ replay() {
       }
     }
 
+
     async EnviarContrasena() {
       console.log ('voy a enviar contraseña');
       if (this.username === undefined) {
@@ -775,6 +781,15 @@ replay() {
       }
   
     }
+
+    GoCorreoCambiarContrasena() {
+      this.route.navigateByUrl('/correo-cambiar-contrasena');
+    } 
+
+    /*
+    GoCambiarContrasena(){
+      this.route.navigateByUrl('/cambiar-contrasena');  
+    }*/
 }
 
 

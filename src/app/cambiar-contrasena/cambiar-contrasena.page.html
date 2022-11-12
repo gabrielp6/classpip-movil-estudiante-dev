@@ -1,0 +1,30 @@
+<ion-content padding class="login-content-registro" *ngIf ="CambiarContrasena">
+  <div>
+
+    <div class="login-credentials">
+<ion-row style="height: 5px"></ion-row>
+<ion-item lines="none">
+  <ion-input type="text" name="clave" placeholder="Clave" requiered [(ngModel)]="clave"></ion-input>
+  <!-- <img class="user-input-logo" width="20" height="20" slot="end"> -->
+  <img width="20" height="20" slot="end" src="../../assets/Login/login-usericon-theme2.svg">  
+</ion-item>
+<ion-row style="height: 5px"></ion-row>
+<ion-item lines="none">
+  <ion-input type="text" name="contrasena" placeholder="Contraseña" requiered [(ngModel)]="contrasena"></ion-input>
+  <!-- <img class="pass-input-logo" width="20" height="20" slot="end"> -->
+  <img width="20" height="20" slot="end" src="../../assets/Login/login-lockicon-theme2.svg">  
+</ion-item>
+<ion-row style="height: 5px"></ion-row>
+<ion-item lines="none">
+  <ion-input type="text" name="contrasenaRep" placeholder="Repite la contraseña" requiered [(ngModel)]="contrasenaRep"></ion-input>
+  <!-- <img class="pass-input-logo" width="20" height="20" slot="end"> -->
+  <img width="20" height="20" slot="end" src="../../assets/Login/login-lockicon-theme2.svg">  
+</ion-item>
+<ion-row style="height: 5px"></ion-row>
+
+<ion-button (click)="CambiarContrasena();" class="login-btn">CAMBIAR CONTRASEÑA
+</ion-button>
+
+    </div>
+  </div>
+</ion-content>

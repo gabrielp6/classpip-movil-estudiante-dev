@@ -46,8 +46,12 @@ const routes: Routes = [
   { path: 'pagina-evaluar/:id', loadChildren: () => import('./pagina-evaluar/pagina-evaluar.module').then(m => m.PaginaEvaluarPageModule) },
   { path: 'pagina-notafinal/:id', loadChildren: () => import('./pagina-notafinal/pagina-notafinal.module').then(m => m.PaginaNotafinalPageModule) },
   // tslint:disable-next-line:max-line-length
-  { path: 'juego-de-control-de-trabajo-en-equipo', loadChildren: () => import('./juego-de-control-de-trabajo-en-equipo/juego-de-control-de-trabajo-en-equipo.module').then(m => m.JuegoDeControlDeTrabajoEnEquipoPageModule) },  { path: 'juego-votacion-aopciones', loadChildren: () => import('./juego-votacion-aopciones/juego-votacion-aopciones.module').then(m => m.JuegoVotacionAOpcionesPageModule) }
+  { path: 'juego-de-control-de-trabajo-en-equipo', loadChildren: () => import('./juego-de-control-de-trabajo-en-equipo/juego-de-control-de-trabajo-en-equipo.module').then(m => m.JuegoDeControlDeTrabajoEnEquipoPageModule) },
+  { path: 'juego-votacion-aopciones', loadChildren: () => import('./juego-votacion-aopciones/juego-votacion-aopciones.module').then(m => m.JuegoVotacionAOpcionesPageModule) },
 
+
+  { path: 'correo-cambiar-contrasena', loadChildren: () => import('./correo-cambiar-contrasena/correo-cambiar-contrasena.module').then(m => m.CorreoCambiarContrasenaModule) },
+  { path: 'cambiar-contrasena', loadChildren: () => import('./cambiar-contrasena/cambiar-contrasena.module').then( m => m.CambiarContrasenaPageModule) }
 
 
 
