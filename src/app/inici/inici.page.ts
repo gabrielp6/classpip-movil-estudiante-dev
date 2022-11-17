@@ -1,3 +1,5 @@
+import { Socket } from 'ngx-socket-io';
+import { ComServerService } from './../servicios/com-server.service';
 import { SwiperComponent, SwiperModule } from 'swiper/angular';
 import { NoopAnimationPlayer } from '@angular/animations';
 import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
@@ -11,6 +13,7 @@ import { JuegoSeleccionadoPage } from '../juego-seleccionado/juego-seleccionado.
 import { IonSlides } from '@ionic/angular';
 import Swiper, { SwiperOptions } from 'swiper';
 import { ThisReceiver } from '@angular/compiler/src/expression_parser/ast';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -40,8 +43,16 @@ export class IniciPage implements OnInit,AfterContentChecked {
     public navCtrl: NavController,
     private sesion: SesionService,
     private peticionesAPI: PeticionesAPIService,
-    private calculos: CalculosService
-  ) { }
+    private calculos: CalculosService,
+    private socket: Socket
+  ) { 
+
+    this.esperarCambioStatusJuegos().subscribe( mensaje => {
+      console.log(`Este es el mensaje: ${mensaje}`);
+      this.DameJuegosAlumno(this.id);
+    })
+    
+  }
 
 
   ngOnInit() {
@@ -152,6 +163,17 @@ export class IniciPage implements OnInit,AfterContentChecked {
     // this.slides.slidePrev();
     this.swiper.swiperRef.slidePrev();
   }
+  
+  esperarCambioStatusJuegos() {
 
+    let observable = new Observable( observer => {
+      this.socket.on('nuevoStatusJuego', (mensaje) => {
+        console.log('Nuevo status de juego: ' + mensaje);
+        observer.next(mensaje);
+      })
+    });
+
+    return observable;
+  }
 
 }
