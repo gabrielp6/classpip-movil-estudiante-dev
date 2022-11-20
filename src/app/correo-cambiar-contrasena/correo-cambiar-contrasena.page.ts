@@ -15,6 +15,7 @@ import { ComServerService, PeticionesAPIService, SesionService } from '../servic
 })
 export class CorreoCambiarContrasenaComponent {
   alumno: Alumno;
+  username: string;
   nombre: string;
   email: string;
 
@@ -45,7 +46,51 @@ export class CorreoCambiarContrasenaComponent {
 
 
   }
-  async EnviarCorreo() {}
+  async EnviarCorreo() {
+
+    console.log ('voy a enviar contraseña');
+    if (this.email === undefined) {
+      const alert = await this.alertController.create({
+        header: 'Atención: Introduce un correo de usuario en el formulario',
+        buttons: ['OK']
+      });
+      await alert.present();
+    } else {
+      console.log ('voy a pedir contraseña ' + this.email);
+      this.peticionesAPI.DameAlumnoConCorreo (this.email)
+      .subscribe (async (res) => {
+          console.log ('tengo res');
+          console.log (res);
+          if (res[0] !== undefined) {
+            console.log ('tengo el alumno');
+            const alumno = res[0]; // Si es diferente de null, el alumno existe
+            // le enviamos la contraseña
+            console.log ('tengo el alumno');
+            this.comServer.RecordarContrasena(alumno);
+            console.log("HOLAAAAAAAA")
+            const alert = await this.alertController.create({
+              header: 'En breve recibirás un email con tu contraseña',
+              buttons: [
+                {
+                  text: 'OK',
+                  handler: () => {
+                    console.log('Confirm Ok');
+                  }
+                }
+              ]
+            });
+            await alert.present();
+          } else {
+            const alert = await this.alertController.create({
+              header: 'No hay ningun alumno con este nombre de usuario',
+              buttons: ['OK']
+            });
+            await alert.present();
+          }
+      });
+    }
+
+  }
 
   VolverDeEnviarCorreo() {
     this.route.navigateByUrl('/home');

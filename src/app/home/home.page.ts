@@ -733,55 +733,6 @@ replay() {
       }
     }
 
-
-    async EnviarContrasena() {
-      console.log ('voy a enviar contraseña');
-      if (this.username === undefined) {
-        const alert = await this.alertController.create({
-          header: 'Atención: Introduce un nombre de usuario en el formulario',
-          buttons: ['OK']
-        });
-        await alert.present();
-      } else {
-        console.log ('voy a pedir contraseña ' + this.username);
-        this.peticionesAPI.DameContrasena (this.username)
-        .subscribe (async (res) => {
-            console.log ('tengo res');
-            console.log (res);
-            if (res[0] !== undefined) {
-              console.log ('trengo el alumno');
-              const alumno = res[0]; // Si es diferente de null, el alumno existe
-              // le enviamos la contraseña
-              console.log ('rengo el alumno');
-              console.log (alumno);
-              this.comServer.Conectar(alumno);
-              this.comServer.RecordarContrasena (alumno);
-        
-              const alert = await this.alertController.create({
-                header: 'En breve recibirás un email con tu contraseña',
-                buttons: [
-                  {
-                    text: 'OK',
-                    handler: () => {
-                      console.log('Confirm Ok');
-                      this.comServer.Desconectar(alumno);
-                    }
-                  }
-                ]
-              });
-              await alert.present();
-            } else {
-              const alert = await this.alertController.create({
-                header: 'No hay ningun alumno con este nombre de usuario',
-                buttons: ['OK']
-              });
-              await alert.present();
-            }
-        });
-      }
-  
-    }
-
     GoCorreoCambiarContrasena() {
       this.route.navigateByUrl('/correo-cambiar-contrasena');
     } 

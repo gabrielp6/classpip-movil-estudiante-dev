@@ -112,9 +112,9 @@ export class ComServerService {
     console.log ('dentro del servicio para enviar notificación al grupo');
     this.servidor.emit ('notificacionGrupo' , {grupoId: grupoDestinatarioId, mensaje: mensajeAEnviar});
   }
-  
+
   public RecordarContrasena(alumno: Alumno) {
-    this.servidor.emit ('recordarPassword' , {email: alumno.Email, nombre: alumno.Username, contrasena: alumno.Password});
+    this.servidor.emit ('recordarPassword' , {email: alumno.Email, username: alumno.Username, password: alumno.Password});
   }
 
   //Para la función de avanzar pregunta Kahoot
