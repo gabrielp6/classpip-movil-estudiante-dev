@@ -174,6 +174,10 @@ export class PeticionesAPIService {
     return this.http.get<Alumno>(this.APIUrlAlumnos + '?filter[where][Username]=' + nombre );
   }
 
+  public DameAlumnoConCorreo(email: string): Observable<Alumno> {
+    return this.http.get<Alumno>(this.APIUrlAlumnos + '?filter[where][Email]=' + email );
+  }
+
   public DameAlumnoAsignacion(nombre: string[]): Observable<Alumno> {
     console.log('Entro a mostrar a ' + nombre[0] + nombre[1]);
     // tslint:disable-next-line:max-line-length
@@ -1282,6 +1286,10 @@ public PonerNotaAlumnoJuegoDeGeocaching(alumnoJuegoDeGeocaching: AlumnoJuegoDeGe
   public RegistraVotacionAOpciones(alumnoJuegoDeVotacionAOpciones: AlumnoJuegoDeVotacionAOpciones): Observable<AlumnoJuegoDeVotacionAOpciones> {
     // tslint:disable-next-line:max-line-length
     return this.http.put<AlumnoJuegoDeVotacionAOpciones>(this.APIUrlAlumnoJuegoDeVotacionAOpciones + '/' + alumnoJuegoDeVotacionAOpciones.id, alumnoJuegoDeVotacionAOpciones);
+  }
+
+  public sendEmail(data){
+    return this.http.post(this.APIUrlAlumnos, data);
   }
   
 }
