@@ -30,6 +30,14 @@ export class ComServerService {
     this.servidor.emit(mensaje, { profesorId: this.profesorId, info: informacion});
   }
 
+  Registrar(alumno: Alumno){
+    console.log("voy a enviar todos los datoooooos")
+    console.log(alumno)
+    
+    this.servidor.emit ('enviarInfoRegistroAlumno', {nombre: alumno.Nombre, primerApellido: alumno.PrimerApellido, segundoApellido: alumno.SegundoApellido,
+      username: alumno.Username, password: alumno.Password, email: alumno.Email});
+  }
+
   EnviarNick(profesorId: number, nick: string) {
     // Como el alumno no se ha conectado por la via normal, no tenemos guardado el identificador
     // del profesor. Por eso lo tenemos que recibir como parámetro
