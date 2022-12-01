@@ -90,7 +90,6 @@ EnviarVotacion () {
   console.log (this.juegoSeleccionado);
   this.misVotos = [];
   if (this.juegoSeleccionado.ModoReparto !== 'Reparto libre') {
-    console.log ('AAAAA');
     for (let i = 0; i < this.juegoSeleccionado.Puntos.length; i++) {
       this.misVotos.push ({
         opcion: this.juegoSeleccionado.Opciones[i],

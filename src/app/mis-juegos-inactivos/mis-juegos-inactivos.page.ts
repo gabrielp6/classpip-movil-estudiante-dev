@@ -6,8 +6,6 @@ import { PeticionesAPIService } from '../servicios/index';
 import { CalculosService } from '../servicios/calculos.service';
 import { Juego, Equipo } from '../clases/index';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Socket } from 'ngx-socket-io';
 import { JuegoSeleccionadoPage } from '../juego-seleccionado/juego-seleccionado.page';
 import { IonSlides } from '@ionic/angular';
 
@@ -35,15 +33,8 @@ export class MisJuegosInactivosPage implements OnInit {
     public navCtrl: NavController,
     private sesion: SesionService,
     private peticionesAPI: PeticionesAPIService,
-    private calculos: CalculosService,
-    private socket: Socket
-  ) {
-
-    this.esperarCambioStatusJuegos().subscribe( mensaje => {
-      console.log(`Este es el mensaje: ${mensaje}`);
-      this.DameJuegosAlumno(this.id);
-    })
-   }
+    private calculos: CalculosService
+  ) { }
  
   ngOnInit() {
     this.id = this.sesion.DameAlumno().id;
@@ -111,16 +102,5 @@ export class MisJuegosInactivosPage implements OnInit {
     this.swiper.swiperRef.slidePrev();
   }
 
-  esperarCambioStatusJuegos() {
-
-    let observable = new Observable( observer => {
-      this.socket.on('nuevoStatusJuego', (mensaje) => {
-        console.log('Nuevo status de juego: ' + mensaje);
-        observer.next(mensaje);
-      })
-    });
-
-    return observable;
-  }
 
 }
