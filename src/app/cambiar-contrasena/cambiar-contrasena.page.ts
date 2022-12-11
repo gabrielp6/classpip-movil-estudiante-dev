@@ -40,6 +40,7 @@ export class CambiarContrasenaPage {
   CambioContrasena = true;
   alumno: Alumno;
   JWT_SECRET: string = "SECRETOCLASSPIP";
+  correcto: string = "0";
 
   constructor(
     private route: Router,
@@ -100,16 +101,20 @@ export class CambiarContrasenaPage {
       this.peticionesAPI.DameAlumnoConId(this.idUsuario)
       .subscribe (async (res) => {
         if (res !== undefined) {
+          
           console.log("EEEEEEEEEEEEEEEEEEEEEEEEE")
           const secret = this.JWT_SECRET + res.Password
           try{
             console.log(secret)
             const payload = jwt.verify(this.token, secret)
+            this.correcto="1";
             console.log("AAAAAAASIIIIIIIIIIIIIIIIIIIIII")
           }
           catch(error){
             console.log(error)
           }
+          console.log(this.correcto)
+          if(this.correcto=="1"){
           res.Password = this.contrasena;
           this.peticionesAPI.CambiarContrasena(res).subscribe();
           const alert = await this.alertController.create({
@@ -124,7 +129,23 @@ export class CambiarContrasenaPage {
             ]
           })
           await alert.present(); 
-        }          
+        }
+        else{
+          const alert = await this.alertController.create({
+            header: 'El token no es valido y no se puede cambiar la contraseña',
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  console.log('Confirm Ok');
+                }
+              }
+            ]
+          })
+          await alert.present();
+
+        }
+      }          
       } 
     )};                      
   }
