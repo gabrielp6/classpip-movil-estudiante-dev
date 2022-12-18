@@ -77,9 +77,11 @@ export class CambiarContrasenaPage {
     const camposURL = window.location.pathname.split('/');
     this.idUsuario = Number(camposURL[2])
     this.token = camposURL[3]
+
+
     console.log(this.token)
     console.log(this.idUsuario)
-    console.log ('cambiando contrasenaaaaaa');
+    console.log ('cambiando contrasena');
 
 
      if (!this.ValidaPass (this.contrasena)) {
@@ -95,25 +97,22 @@ export class CambiarContrasenaPage {
         buttons: ['OK']
       });
       await alert.present();
-    } else {
-      console.log()
 
+    } else {
       this.peticionesAPI.DameAlumnoConId(this.idUsuario)
       .subscribe (async (res) => {
         if (res !== undefined) {
-          
-          console.log("EEEEEEEEEEEEEEEEEEEEEEEEE")
           const secret = this.JWT_SECRET + res.Password
+
           try{
-            console.log(secret)
             const payload = jwt.verify(this.token, secret)
+            console.log(payload)
             this.correcto="1";
-            console.log("AAAAAAASIIIIIIIIIIIIIIIIIIIIII")
           }
           catch(error){
             console.log(error)
           }
-          console.log(this.correcto)
+
           if(this.correcto=="1"){
           res.Password = this.contrasena;
           this.peticionesAPI.CambiarContrasena(res).subscribe();
@@ -143,9 +142,9 @@ export class CambiarContrasenaPage {
             ]
           })
           await alert.present();
-
+          
         }
-      }          
+        }          
       } 
     )};                      
   }

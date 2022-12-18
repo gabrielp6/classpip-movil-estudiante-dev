@@ -67,7 +67,6 @@ export class CorreoCambiarContrasenaComponent {
             // le enviamos la contraseña
             console.log ('tengo el alumno');
             this.comServer.RecordarContrasena(alumno);
-            console.log("HOLAAAAAAAA")
             const alert = await this.alertController.create({
               header: 'En breve recibirás un email con tu contraseña',
               buttons: [
@@ -113,7 +112,6 @@ export class CorreoCambiarContrasenaComponent {
             // le enviamos la contraseña
             console.log ('tengo el alumno');
             this.comServer.EnviarCodigoContrasena(alumno);
-            console.log("AAAAAAAAAAAAeeeeeeeeeeeeeeeeee")
             const alert = await this.alertController.create({
               header: 'En breve recibirás un email con el codigo para cambiar de contraseña',
               buttons: [

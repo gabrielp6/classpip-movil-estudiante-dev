@@ -71,7 +71,7 @@
     "ngx-socket-io": "^3.2.0",
     "npm": "^6.14.11",
     "rxjs": "^6.6.7",
-    "stream": "0.0.2",
+    "stream-browserify": "^3.0.0",
     "sweetalert2": "^9.17.2",
     "swiper": "^6.8.4",
     "tslib": "^2.0.0",
